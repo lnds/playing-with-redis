@@ -72,6 +72,16 @@ class Unread(Resource):
 
 api.add_resource(Unread, '/messages/<user_id>/unread')   
 
+class Read(Resource):
+
+    def get(self, user_id):
+        user = users.get_user(redis, user_id)
+        if user is None:
+            return 'no-user', 404
+        return messages.get_read_messages(redis, user), 201
+
+api.add_resource(Read, '/messages/<user_id>/read')   
+
 @app.route('/')
 def hello():
     redis.incr('hits')

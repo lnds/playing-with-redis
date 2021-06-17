@@ -7,14 +7,22 @@ Also implements a Flask Rest API with two entities:
         /users
 
 
-        /notifications
+        /messages
 
 For example:
 
-    - POST /notifications/send/<user_id>
+    - POST /messages/<user_id>/send
 
-            Add a notification for an user
+            Add a message for an user
 
-    - POST /notifications/broadcast
+    - GET /messages/<user_id>/unread
 
-        Send a notification for all users
+            Unread messages
+
+    - GET /messages/<user_id>/read
+        
+            Read messages
+            
+    - POST /messages/broadcast
+
+        Send a message for all users
